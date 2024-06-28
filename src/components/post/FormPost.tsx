@@ -3,8 +3,10 @@
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { createPost } from "@/services/post.service"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import { fetchAllCategories } from "@/services/category.service"
 
 type FormPostProps = {
     setOpen: (open: boolean) => void;
@@ -23,11 +25,17 @@ const FormPost = ({ setOpen } : FormPostProps) => {
         },
     });
 
+    const { isPending, error, data } = useQuery({
+        queryKey: ['getAllCategories'],
+        queryFn: fetchAllCategories
+    })
+
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const createPostDTO = {
-            title: e.target.title.value,
+            title: e.target.name.value,
             description: e.target.description.value
         }
 
@@ -48,6 +56,21 @@ const FormPost = ({ setOpen } : FormPostProps) => {
                     placeholder="Post description"
                     name="description"
                 />
+            </div>
+            <div>
+                {/* afficher select avec les categories*/}
+                <Select name="categorie" required={true}>
+                    <SelectTrigger>
+                        <SelectValue placeholder="Select a category" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        {data && data.map((category: any) => (
+                            <SelectItem key={category.id} value={category.id}>
+                                {category.name}
+                            </SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
             </div>
             <div>
                 <Button type="submit" className="w-full" disabled={mutation.isPending}>

@@ -4,6 +4,7 @@ import { POST_ENDPOINT } from "@/utils/constants";
 export const fetchAllPosts = async () => {
     const response = await fetch(POST_ENDPOINT);
     const data = await response.json();
+    console.log(data);
     return data;
 }
 

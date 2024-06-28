@@ -24,6 +24,11 @@ const PostList = () => {
                         <Link href={`/posts/${post.id}`}>
                             <h3 className="text-lg font-medium mb-2">{post.title}</h3>
                         </Link>
+                        {post.category && (
+                            <>
+                                <p className="text-gray-500">Category: {post.category.name}</p>
+                            </>
+                        )}
                         <p className="text-gray-500">{post.description}</p>
                     </div>
                 ))}

@@ -59,7 +59,16 @@ const FormPost = ({ setOpen } : FormPostProps) => {
             </div>
             <div>
                 {/* afficher select avec les categories*/}
-                <Select name="categorie" required={true}>
+                <select name="categorie" required={true}>
+                    <option value="">Select a category</option>
+                    {data && data.map((category: any) => (
+                        <option key={category.id} value={category.id}>
+                            {category.name}
+                        </option>
+                    ))}
+                </select>
+
+                {/* <Select name="categorie" required={true}>
                     <SelectTrigger>
                         <SelectValue placeholder="Select a category" />
                     </SelectTrigger>
@@ -70,7 +79,7 @@ const FormPost = ({ setOpen } : FormPostProps) => {
                             </SelectItem>
                         ))}
                     </SelectContent>
-                </Select>
+                </Select> */}
             </div>
             <div>
                 <Button type="submit" className="w-full" disabled={mutation.isPending}>

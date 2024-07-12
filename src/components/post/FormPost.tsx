@@ -35,7 +35,7 @@ const FormPost = ({ setOpen } : FormPostProps) => {
         e.preventDefault();
 
         const createPostDTO = {
-            title: e.target.name.value,
+            title: e.target.title.value,
             description: e.target.description.value
         }
 

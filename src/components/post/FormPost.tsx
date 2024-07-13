@@ -34,9 +34,10 @@ const FormPost = ({ setOpen } : FormPostProps) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const createPostDTO = {
-            title: e.target.title.value,
-            description: e.target.description.value
+        const createPostDTO= {
+            title: e.currentTarget.title.value,
+            description: e.currentTarget.description.value,
+            category: e.currentTarget.categorie.value
         }
 
         mutation.mutate(createPostDTO);
@@ -58,7 +59,6 @@ const FormPost = ({ setOpen } : FormPostProps) => {
                 />
             </div>
             <div>
-                {/* afficher select avec les categories*/}
                 <select name="categorie" required={true}>
                     <option value="">Select a category</option>
                     {data && data.map((category: any) => (
@@ -67,19 +67,6 @@ const FormPost = ({ setOpen } : FormPostProps) => {
                         </option>
                     ))}
                 </select>
-
-                {/* <Select name="categorie" required={true}>
-                    <SelectTrigger>
-                        <SelectValue placeholder="Select a category" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {data && data.map((category: any) => (
-                            <SelectItem key={category.id} value={category.id}>
-                                {category.name}
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select> */}
             </div>
             <div>
                 <Button type="submit" className="w-full" disabled={mutation.isPending}>

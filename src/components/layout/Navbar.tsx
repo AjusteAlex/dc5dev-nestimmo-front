@@ -4,11 +4,9 @@ import DrawerCategory from "../category/DrawerCategory";
 
 const Navbar = () => {
     return ( 
-        <nav className="flex justify-between p-5">
+        <nav className="flex gap-4 p-5">
             <Link href="/">Post list</Link>
             <Link href="/category">Category list</Link>
-            <DrawerPost />
-            <DrawerCategory />
         </nav>
     );
 }

@@ -28,6 +28,19 @@ export const createCategory = async (createCategoryDTO: CategoryCreateDTO) => {
     return data;
 }
 
+export const updateCategory = async (id: string, updateCategoryDTO: CategoryCreateDTO) => {
+    const response = await fetch(`${CATEGORY_ENDPOINT}/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updateCategoryDTO)
+    });
+    const data = await response.json();
+    return data;
+
+}
+
 export const deleteCategory = async (id: string) => {
     const response = await fetch(`${CATEGORY_ENDPOINT}/${id}`, {
         method: 'DELETE'

@@ -19,18 +19,18 @@ const DialogConfirmDelete = ({ handleDelete, isPending }: DialogConfirmDeletePro
         <Dialog>
             <DialogTrigger asChild>
                 <Button variant="destructive">
-                    Delete
+                    Supprimer
                 </Button>
             </DialogTrigger>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle>Are you absolutely sure?</DialogTitle>
+                    <DialogTitle>Etes vous sur ?</DialogTitle>
                     <DialogDescription>
-                        This action cannot be undone. This will permanently delete data.
+                        Cette action ne peut pas être annulée. Cela supprimera définitivement les données.
                     </DialogDescription>
                 </DialogHeader>
                 <Button variant="destructive" onClick={handleDelete} disabled={isPending}>
-                    Confirm
+                    Valider
                 </Button>
             </DialogContent>
         </Dialog>

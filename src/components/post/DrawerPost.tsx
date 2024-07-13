@@ -31,11 +31,6 @@ const DrawerPost = () => {
                     <DrawerDescription className="text-center">Renseignez l'enssemble des champs.</DrawerDescription>
                     <FormPost setOpen={setOpen} />
                 </DrawerHeader>
-                <DrawerFooter>
-                    <DrawerClose>
-                        <Button variant="outline">Cancel</Button>
-                    </DrawerClose>
-                </DrawerFooter>
             </DrawerContent>
         </Drawer>
     );

@@ -24,7 +24,7 @@ const DrawerUpdatePost = ({post}) => {
         <Drawer open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
                 <Button variant="default">
-                    Update post
+                    Modifier
                 </Button>
             </DrawerTrigger>
             <DrawerContent>
@@ -33,11 +33,6 @@ const DrawerUpdatePost = ({post}) => {
                     <DrawerDescription className="text-center">Renseignez l'ensemble des champs.</DrawerDescription>
                     <FormUpdatePost setOpen={setOpen} post={post}/>
                 </DrawerHeader>
-                <DrawerFooter>
-                    <DrawerClose>
-                        <Button variant="outline">Cancel</Button>
-                    </DrawerClose>
-                </DrawerFooter>
             </DrawerContent>
         </Drawer>
     );

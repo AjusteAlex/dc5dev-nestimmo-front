@@ -40,15 +40,16 @@ const PostDetail = () => {
     
     return (
         <div className="px-8">
-            <h3 className="text-lg font-medium mb-2">{data.title}</h3>
-            <p>{data.description}</p>
+            <h3 className="text-lg font-medium mb-2"><span className="font-bold">Titre :</span> {data.title}</h3>
+            <p><span className="font-bold">Description :</span> {data.description}</p>
 
-            <DrawerUpdatePost post={data}/>
-
-            <DialogConfirmDelete
-                handleDelete={handleDelete}
-                isPending={mutation.isPending}
-            />
+            <div className="flex gap-4 pt-8">
+                <DialogConfirmDelete
+                    handleDelete={handleDelete}
+                    isPending={mutation.isPending}
+                />
+                <DrawerUpdatePost post={data}/>
+            </div>
         </div>
     );
 }

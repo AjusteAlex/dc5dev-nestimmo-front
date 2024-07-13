@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { updatePost } from "@/services/post.service"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { fetchAllCategories } from "@/services/category.service"
+import {DrawerClose} from "@/components/ui/drawer";
 
 type FormPostProps = {
     setOpen: (open: boolean) => void;
@@ -43,34 +44,39 @@ const FormUpdatePost = ({ setOpen, post } : FormPostProps) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div className="mb-2">
-                <Input
-                    defaultValue={post.title}
-                    type="text"
-                    placeholder="Post title"
-                    name="title"
-                />
+        <form onSubmit={handleSubmit} className="flex justify-center flex-col w-1/2 m-auto gap-4 pt-8">
+            <div className="mb-2 flex justify-between">
+                <div>
+                    <Input
+                        defaultValue={post.title}
+                        type="text"
+                        placeholder="Titre du post"
+                        name="title"
+                    />
+                </div>
+                <div>
+                    <select name="categorie" required={true}  defaultValue={post.category} >
+                        <option value="">Sélectionner une catégorie</option>
+                        {data && data.map((category: any) => (
+                            <option key={category.id} value={category.id}>
+                                {category.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
             <div className="mb-2">
                 <Textarea
                     defaultValue={post.description}
-                    placeholder="Post description"
+                    placeholder="Description du post"
                     name="description"
                 />
             </div>
-            <div>
-                <select name="categorie" defaultValue={post.category} >
-                    <option value="">Select a category</option>
-                    {data && data.map((category: any) => (
-                        <option key={category.id} value={category.id}>
-                            {category.name}
-                        </option>
-                    ))}
-                </select>
-            </div>
-            <div>
-                <Button type="submit" className="w-full" disabled={mutation.isPending}>
+            <div className="flex gap-4 justify-center pt-8">
+                <DrawerClose>
+                    <Button size="lg" variant="destructive">Annuler</Button>
+                </DrawerClose>
+                <Button type="submit" size="lg" disabled={mutation.isPending}>
                     {mutation.isPending && <span className="mr-4 h-4 w-4 rounded-full bg-white animate-pulse"></span>}
                     Mise a jour du post
                 </Button>

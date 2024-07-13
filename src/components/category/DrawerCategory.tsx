@@ -32,7 +32,7 @@ const DrawerCategory = () => {
                 </DrawerHeader>
                 <DrawerFooter>
                     <DrawerClose>
-                        <Button variant="outline">Cancel</Button>
+                        <Button variant="outline">Annuler</Button>
                     </DrawerClose>
                 </DrawerFooter>
             </DrawerContent>
